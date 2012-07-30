@@ -31,10 +31,11 @@ Using maven:
 
 1. Install to your maven repository by running mvn install
 2. Include dependency in your pom.xml:
-<pre>
-    <dependency>
-        <groupId>za.co.trf.recurly</groupId>
-        <artifactId>recurly-integration-library</artifactId>
-        <version>1.0</version>
-    </dependency>
-</pre>
+
+```xml
+<dependency>
+    <groupId>za.co.trf.recurly</groupId>
+    <artifactId>recurly-integration-library</artifactId>
+    <version>2.1</version>
+</dependency>
+```
