@@ -11,20 +11,6 @@ import java.util.Map;
 public class Util {
 
     /**
-     * Determine if any of a list of arguments are null or empty
-     * @param args arguments to check
-     * @return true if any of the provided arguments are null or empty, false if no arguments are null or empty 
-     */
-    public static boolean isAnyEmpty(String... args) {
-        for (String arg : args) {
-            if (arg == null || arg.isEmpty()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * An implementation of PHP's http_build_query. This is central to the Recurly.js
      * signature scheme.
      * @see <a href="http://docs.recurly.com/api/recurlyjs/signatures>Recurly.js Signature Generation</a>
@@ -37,9 +23,9 @@ public class Util {
 	public static String httpBuildQuery(Map<String, Object> args, String key) {
         final String ENCODING = "UTF8";
 
-        ArrayList<String> pairs = new ArrayList<String>();
+        List<String> pairs = new ArrayList<String>();
         if (args != null) {
-            String[] sortedKeys = args.keySet().toArray(new String[0]);
+            String[] sortedKeys = args.keySet().toArray(new String[args.keySet().size()]);
             Arrays.sort(sortedKeys);
             for (String k: sortedKeys) {
                 try {
@@ -52,7 +38,7 @@ public class Util {
                         pairs.add(httpBuildQuery((Map<String, Object>)obj, k));
                     } else if (obj instanceof Object[]) {
                         Object[] values = (Object[])obj;
-                        HashMap<String, Object> mappedArgs = new HashMap<String, Object>();
+                        Map<String, Object> mappedArgs = new HashMap<String, Object>();
                         for (int i = 0; i < values.length; i++) {
                             mappedArgs.put(Integer.toString(i), values[i]);
                         }

@@ -3,7 +3,6 @@ package za.co.trf.recurly;
 import java.util.Date;
 import java.util.HashMap;
 
-import junit.framework.TestCase;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,7 +11,7 @@ import za.co.trf.recurly.js.RecurlyJS;
 /**
  * Recurly JS Tests
  */
-public class RecurlyJSTest extends TestCase {
+public class RecurlyJSTest {
 
     private static final Logger LOG = Logger.getLogger(RecurlyJSTest.class);
 

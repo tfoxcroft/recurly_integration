@@ -12,13 +12,6 @@ being received by Recurly. The client library consists of helper methods to crea
 Documentation: http://docs.recurly.com/recurlyjs
 
 
-Configuration and Usage
------------------------
-
-For RecurlyJS usage, please refer to the JUnit test cases in RecurlyJSTest]
-(https://github.com/tfoxcroft/recurly_integration/blob/master/src/test/java/za/co/trf/recurly/RecurlyJSTest.java)
-
-
 Installation
 ------------
 
@@ -33,9 +26,40 @@ Using maven:
 2. Include dependency in your pom.xml:
 
 ```xml
+<!-- Recurly -->
 <dependency>
     <groupId>za.co.trf.recurly</groupId>
     <artifactId>recurly-integration-library</artifactId>
-    <version>2.1</version>
+    <version>1.0</version>
 </dependency>
+```
+
+
+Configuration and Usage
+-----------------------
+
+For RecurlyJS usage, please refer to the JUnit test cases in RecurlyJSTest]
+(https://github.com/tfoxcroft/recurly_integration/blob/master/src/test/java/za/co/trf/recurly/RecurlyJSTest.java)
+
+The library has been designed with Spring configuration in mind:
+
+```xml
+<!-- Recurly Integration Beans -->
+<bean id="recurlyJS" class="za.co.trf.recurly.js.RecurlyJS">
+    <!-- Private Key -->
+    <constructor-arg value="a7e8ccc62d1d4127bcfd822a33496943" />
+</bean>
+```
+
+If your Recurly private key is not directly available to your Spring configuration file (e.g. if it is stored in a
+stored in a database), you can write a class implementing the KeyProvider interface and pass this through to RecurlyJS:
+
+```xml
+<!-- Recurly Integration Beans -->
+<bean id="recurlyJS" class="za.co.trf.recurly.js.RecurlyJS">
+    <constructor-arg>
+        <!-- Private Key Provider -->
+        <bean id="keyProvider" class="za.co.example.MyKeyProvider"/>
+    </constructor-arg>
+</bean>
 ```
