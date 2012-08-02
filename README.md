@@ -39,7 +39,9 @@ Using maven:
 Configuration and Usage
 -----------------------
 
-For RecurlyJS usage, please refer to the JUnit test cases in RecurlyJSTest]
+For RecurlyJS usage, please see the 
+[Sample Application](https://github.com/tfoxcroft/recurly_integration_sample_app) as well as  the JUnit test cases 
+in [RecurlyJSTest]
 (https://github.com/tfoxcroft/recurly_integration/blob/master/src/test/java/za/co/trf/recurly/RecurlyJSTest.java)
 
 The library has been designed with Spring configuration in mind:
