@@ -31,7 +31,7 @@ Using maven:
 <dependency>
     <groupId>za.co.trf.recurly</groupId>
     <artifactId>recurly-integration-library</artifactId>
-    <version>1.0</version>
+    <version>2.1.0</version>
 </dependency>
 ```
 
