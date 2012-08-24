@@ -37,7 +37,7 @@ public class RecurlyJSTest {
         }});
         LOG.info("SignSimple: " + hash);
         Assert.assertEquals("Subscription hash not as expected",
-            "e4bbe0671c8154f82b6a96cf2b13307d839e6ad6|account%5Baccount_code%5D=123&nonce=1234567890ABC&timestamp=1330452000", hash);
+            "7e092a0c75c1219f6445cd8d41c59c9ada178879|account%5Baccount_code%5D=123&nonce=1234567890ABC&timestamp=1330452", hash);
     }
 
     @Test
@@ -61,11 +61,11 @@ public class RecurlyJSTest {
         }});
         LOG.info("SignComplex: " + hash);
         Assert.assertEquals("Subscription hash not as expected", 
-              "af31773205811350017ed1d05e5b2f7d303417d8|" +
+              "1186ef26e4f69a6b6e5523bea5bb09d1a8a6f2a5|" +
               "account%5Baccount_code%5D=123&add_ons%5B0%5D%5Badd_on_code%5D=extra&ad" +
               "d_ons%5B0%5D%5Bquantity%5D=5&add_ons%5B1%5D%5Badd_on_code%5D=bonus&add" +
               "_ons%5B1%5D%5Bquantity%5D=2&nonce=1234567890ABC&plan_code=gold&quantit" +
-              "y=1&timestamp=1330452000", hash);
+              "y=1&timestamp=1330452", hash);
     }
 
     /**
