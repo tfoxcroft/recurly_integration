@@ -4,41 +4,47 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>za.co.trf.recurly</groupId>
+    <groupId>com.github.tfoxcroft</groupId>
     <artifactId>recurly-integration-library</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
+    <name>Recurly Integration Library</name>
+    <description>Client library for integrating with Recurly's RecurlyJS</description>
+    <url>https://github.com/tfoxcroft/recurly_integration</url>
+
+    <licenses>
+        <license>
+            <name>MIT license</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git@github.com:tfoxcroft/recurly_integration.git</connection>
+        <url>scm:git@github.com:tfoxcroft/recurly_integration.git</url>
+        <developerConnection>scm:git@github.com:tfoxcroft/recurly_integration.git</developerConnection>
+    </scm>
+
+    <developers>
+    </developers>
+
     <properties>
-        <slf4j.version>1.6.1</slf4j.version>
+        <junit.version>4.10</junit.version>
+        <log4j.version>1.2.17</log4j.version>
     </properties>
 
     <dependencies>
         <dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
         <dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
+			<version>${log4j.version}</version>
 		</dependency>
     </dependencies>
     
