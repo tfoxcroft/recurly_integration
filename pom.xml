@@ -4,10 +4,30 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>za.co.trf.recurly</groupId>
+    <groupId>com.github.tfoxcroft</groupId>
     <artifactId>recurly-integration-library</artifactId>
     <version>2.1.0</version>
     <packaging>jar</packaging>
+
+    <name>Recurly Integration Library</name>
+    <description>Client library for integrating with Recurly's RecurlyJS</description>
+    <url>https://github.com/tfoxcroft/recurly_integration</url>
+
+    <licenses>
+        <license>
+            <name>MIT license</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git@github.com:tfoxcroft/recurly_integration.git</connection>
+        <url>scm:git@github.com:tfoxcroft/recurly_integration.git</url>
+        <developerConnection>scm:git@github.com:tfoxcroft/recurly_integration.git</developerConnection>
+    </scm>
+
+    <developers>
+    </developers>
 
     <properties>
         <junit.version>4.10</junit.version>
