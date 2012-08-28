@@ -38,7 +38,6 @@ public class RecurlyJS {
      */
     public String sign(Map<String, Object> args) {
         HashMap<String, Object> newArgs = new HashMap<String, Object>(args);
-        // TODO : check format and accuracy of timestamp required by Recurly
         newArgs.put("timestamp", getTimestamp().getTime() / 1000);
         newArgs.put("nonce", getNonce());
         String query = Util.httpBuildQuery(newArgs, null);
