@@ -1,5 +1,6 @@
 package za.co.trf.recurly.js;
 
+import org.apache.log4j.Logger;
 import za.co.trf.recurly.*;
 
 import java.security.InvalidKeyException;
@@ -16,6 +17,8 @@ import javax.crypto.spec.SecretKeySpec;
  * Java implementation of recurly_js.php
  */
 public class RecurlyJS {
+
+    private static final Logger log = Logger.getLogger(RecurlyJS.class);
 
     private KeyProvider keyProvider;
 
@@ -39,7 +42,11 @@ public class RecurlyJS {
         newArgs.put("timestamp", getTimestamp().getTime() / 1000);
         newArgs.put("nonce", getNonce());
         String query = Util.httpBuildQuery(newArgs, null);
-        return hash(getPrivateKey(), query) + '|' + query;
+        String signature = hash(getPrivateKey(), query) + '|' + query;
+        if (log.isDebugEnabled()) {
+            log.debug("Signature created: " + signature);
+        }
+        return signature;
     }
 
     /**
