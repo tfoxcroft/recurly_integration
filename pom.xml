@@ -13,7 +13,7 @@
 
     <groupId>com.github.tfoxcroft</groupId>
     <artifactId>recurly-integration-library</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Recurly Integration Library</name>
@@ -28,9 +28,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git@github.com:tfoxcroft/recurly_integration.git</connection>
-        <developerConnection>scm:git@github.com:tfoxcroft/recurly_integration.git</developerConnection>
-        <url>git@github.com:tfoxcroft/recurly_integration.git</url>
+        <developerConnection>scm:git:ssh://git@github.com/tfoxcroft/recurly_integration.git</developerConnection>
+        <connection>scm:git:ssh://git@github.com/tfoxcroft/recurly_integration.git</connection>
+        <url>https://github.com/tfoxcroft/recurly_integration/tree/1_0</url>
     </scm>
 
     <developers>
@@ -59,7 +59,28 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.2.1</version>
+                <configuration>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-gitexe</artifactId>
+                        <version>1.4</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.codehaus.plexus</groupId>
+                        <artifactId>plexus-utils</artifactId>
+                        <version>1.5.9</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>2.0.4</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -72,6 +93,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.5</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -98,7 +120,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.1</version>
+                        <version>1.4</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
