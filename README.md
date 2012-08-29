@@ -29,7 +29,7 @@ Using maven:
 ```xml
 <!-- Recurly -->
 <dependency>
-    <groupId>za.co.trf.recurly</groupId>
+    <groupId>com.github.tfoxcroft</groupId>
     <artifactId>recurly-integration-library</artifactId>
     <version>2.1.0</version>
 </dependency>
