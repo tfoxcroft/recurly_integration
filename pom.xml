@@ -11,7 +11,7 @@
 
     <groupId>com.github.tfoxcroft</groupId>
     <artifactId>recurly-integration-library</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>Recurly Integration Library</name>
@@ -29,7 +29,8 @@
         <developerConnection>scm:git:ssh://github.com/tfoxcroft/recurly_integration.git</developerConnection>
         <connection>scm:git:ssh://github.com/tfoxcroft/recurly_integration.git</connection>
         <url>http://github.com/tfoxcroft/recurly_integration</url>
-    </scm>
+      <tag>recurly-integration-library-1.0.0</tag>
+  </scm>
 
     <developers>
     </developers>
