@@ -26,8 +26,8 @@
     </licenses>
 
     <scm>
-        <developerConnection>scm:git:ssh://github.com/tfoxcroft/recurly_integration.git</developerConnection>
-        <connection>scm:git:ssh://github.com/tfoxcroft/recurly_integration.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/tfoxcroft/recurly_integration.git</developerConnection>
+        <connection>scm:git:ssh://git@github.com/tfoxcroft/recurly_integration.git</connection>
         <url>http://github.com/tfoxcroft/recurly_integration</url>
   </scm>
 
