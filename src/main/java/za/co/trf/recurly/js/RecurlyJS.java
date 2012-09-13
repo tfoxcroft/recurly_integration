@@ -31,6 +31,61 @@ public class RecurlyJS {
     }
 
     /**
+     * Convenience method for signing a typical new plan subscription
+     * @param planCode the code of the plan to be subscribed to
+     * @return the generated signature
+     */
+    public String signForNewSubscriptionToPlan(final String planCode) {
+        return sign(new HashMap<String, Object>() {{
+            put(RecurlyConstants.JS_PARAM_SUBSCRIPTION, new HashMap<String, Object>() {
+                {
+                    put(RecurlyConstants.JS_PARAM_PLAN_CODE, planCode);
+                }
+            });
+        }});
+    }
+
+    /**
+     * Convenience method for signing a typical billing information update
+     * @param accountCode the account code who billing information is to be updated
+     * @return the generated signature
+     */
+    public String signForBillingInfoUpdate(final String accountCode) {
+        return sign(new HashMap<String, Object>() {{
+            put(RecurlyConstants.JS_PARAM_ACCOUNT, new HashMap<String, Object>() {
+                {
+                    put(RecurlyConstants.JS_PARAM_ACCOUNT_CODE, accountCode);
+                }
+            });
+        }});
+    }
+
+    /**
+     * Convenience method for signing a typical one time transaction
+     * @param accountCode the account code the transaction is for
+     * @param amountInCents the transaction amount in cents
+     * @return the generated signature
+     */
+    public String signOneTimeTransaction(final String accountCode, final int amountInCents) {
+        if (accountCode == null || accountCode.isEmpty()) {
+            throw new IllegalArgumentException("Account Code is required");
+        }
+
+        return sign(new HashMap<String, Object>() {{
+            put(RecurlyConstants.JS_PARAM_ACCOUNT, new HashMap<String, Object>() {
+                {
+                    put(RecurlyConstants.JS_PARAM_ACCOUNT_CODE, accountCode);
+                }
+            });
+            put(RecurlyConstants.JS_PARAM_TRANSACTION, new HashMap<String, Object>() {
+                {
+                    put(RecurlyConstants.JS_PARAM_AMOUNT_IN_CENTS, amountInCents);
+                }
+            });
+        }});
+    }
+    
+    /**
      * Create a signature using the private key and given map of arguments
      * @see <a href="http://docs.recurly.com/api/recurlyjs/signatures>Recurly.js Signature Generation</a>
      * @param args the map of arguments

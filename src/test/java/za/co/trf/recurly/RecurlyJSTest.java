@@ -17,7 +17,7 @@ public class RecurlyJSTest {
 
     private static final String SECRET_KEY = "0123456789abcdef0123456789abcdef";
 
-    MockRecurlyJS recurlyJS = new MockRecurlyJS(SECRET_KEY);
+    private MockRecurlyJS recurlyJS = new MockRecurlyJS(SECRET_KEY);
 
     @Test
     public void testHash() throws Exception {
