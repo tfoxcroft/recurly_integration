@@ -15,15 +15,15 @@ Documentation: http://docs.recurly.com/recurlyjs
 Installation
 ------------
 
-Using the JAR:
+######Using the JAR:######
 
 1. Build the jar by running: mvn package
 2. Add the jar to your classpath.
 
-Using maven:
+######Using maven:######
 
-1. Install to your maven repository by running mvn install
-2. Include dependency in your pom.xml:
+The Recurly Integration Library is in Maven Central, so you do not need to add any additional repositories to your POM.
+Simply add the neccessary dependency:
 
 ```xml
 <!-- Recurly -->
@@ -32,6 +32,12 @@ Using maven:
     <artifactId>recurly-integration-library</artifactId>
     <version>2.1.0</version>
 </dependency>
+```
+
+To install snapshot versions to your local maven repository, simply run:
+
+```console
+mvn install
 ```
 
 Configuration and Usage
