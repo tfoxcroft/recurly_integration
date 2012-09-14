@@ -29,7 +29,7 @@
         <developerConnection>scm:git:ssh://git@github.com/tfoxcroft/recurly_integration.git</developerConnection>
         <connection>scm:git:ssh://git@github.com/tfoxcroft/recurly_integration.git</connection>
         <url>http://github.com/tfoxcroft/recurly_integration</url>
-    <tag>recurly-integration-library-2.1.0</tag>
+        <tag>recurly-integration-library-2.1.0</tag>
   </scm>
 
     <developers>
