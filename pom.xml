@@ -16,7 +16,7 @@
 
     <name>Recurly Integration Library</name>
     <description>Client library for integrating with Recurly's RecurlyJS</description>
-    <url>https://github.com/tfoxcroft/recurly_integration</url>
+    <url>http://tfoxcroft.github.com/recurly_integration</url>
 
     <licenses>
         <license>

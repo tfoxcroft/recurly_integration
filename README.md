@@ -73,9 +73,8 @@ stored in a database), you can write a class implementing the KeyProvider interf
 
 Contributing
 ------------
-Any contributions are welcome. Simply fork the
-[Recurly Java Integration Library repository on GitHub](https://github.com/tfoxcroft/recurly_integration)
-and send a Pull Request.
+Any contributions are welcome. Simply fork the [Recurly Integration Library](https://github.com/tfoxcroft/recurly_integration)
+repository on GitHub and open a Pull Request.
 
 Acknowledgements
 ----------------
