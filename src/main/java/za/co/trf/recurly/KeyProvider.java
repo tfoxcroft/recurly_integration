@@ -1,7 +1,8 @@
 package za.co.trf.recurly;
 
 /**
- * A KeyProvider is a container for a Recurly private key.
+ * A KeyProvider is a container for a Recurly key (private or API).
+ *
  * @see SimpleKeyProvider
  */
 public interface KeyProvider {
@@ -9,6 +10,6 @@ public interface KeyProvider {
     /**
      * @return the Recurly private key offered by this provider
      */
-    public String getPrivateKey();
+    public String getKey();
 
 }

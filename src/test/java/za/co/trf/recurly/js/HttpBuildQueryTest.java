@@ -1,4 +1,4 @@
-package za.co.trf.recurly;
+package za.co.trf.recurly.js;
 
 import static org.junit.Assert.*;
 
@@ -6,13 +6,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import org.junit.Assert;
 import org.junit.Test;
+import za.co.trf.recurly.Util;
 
+/**
+ * HttpBuildQuery util method Tests
+ */
 public class HttpBuildQueryTest {
 
     @Test
     public void testEmpty() {
-        assertEquals("", Util.httpBuildQuery(null, null));
+        Assert.assertEquals("", Util.httpBuildQuery(null, null));
         assertEquals("", Util.httpBuildQuery(new HashMap<String, Object>(), null));
     }
 

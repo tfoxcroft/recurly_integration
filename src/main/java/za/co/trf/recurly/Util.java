@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * General Util Methods
+ */
 public class Util {
 
     /**

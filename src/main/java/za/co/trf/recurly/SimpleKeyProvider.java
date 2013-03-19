@@ -5,14 +5,17 @@ package za.co.trf.recurly;
  */
 public class SimpleKeyProvider implements KeyProvider {
 
-    private String privateKey;
+    /**
+     * The key
+     */
+    private String key;
 
-    public SimpleKeyProvider(String privateKey) {
-        this.privateKey = privateKey;
+    public SimpleKeyProvider(String key) {
+        this.key = key;
     }
 
-    public String getPrivateKey() {
-        return privateKey;
+    public String getKey() {
+        return key;
     }
 
 }

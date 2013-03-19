@@ -14,18 +14,28 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * Java implementation of recurly_js.php
+ * Generates signatures for RecurlyJS forms
+ *
+ * @see za.co.trf.recurly.api.rest.RecurlyJSResultService for fetching the results of the RecurlyJS form submission
  */
 public class RecurlyJS {
 
-    private static final Logger log = Logger.getLogger(RecurlyJS.class);
+    private final Logger log = Logger.getLogger(getClass());
 
     private KeyProvider keyProvider;
 
+    /**
+     * @param privateKey String representation of your Recurly private key for signing RecurlyJS forms.
+     */
     public RecurlyJS(String privateKey) {
         keyProvider = new SimpleKeyProvider(privateKey);
     }
 
+    /**
+     * @param keyProvider KeyProvider implementation which must provide your Recurly private key for
+     *                    signing RecurlyJS forms. Useful in instances where your private key is not
+     *                    accessible at the time the RecurlyJS instance is constructed
+     */
     public RecurlyJS(KeyProvider keyProvider) {
         this.keyProvider = keyProvider;
     }
@@ -141,7 +151,7 @@ public class RecurlyJS {
      * @return the private key
      */
     private String getPrivateKey() {
-        return keyProvider.getPrivateKey();
+        return keyProvider.getKey();
     }
 
     /**

@@ -1,4 +1,4 @@
-package za.co.trf.recurly;
+package za.co.trf.recurly.js;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
-import za.co.trf.recurly.js.RecurlyJS;
+import za.co.trf.recurly.RecurlyConstants;
 
 /**
  * Recurly JS Tests
