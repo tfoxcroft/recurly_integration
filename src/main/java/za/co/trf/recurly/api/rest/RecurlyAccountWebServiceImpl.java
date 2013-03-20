@@ -24,7 +24,8 @@ public class RecurlyAccountWebServiceImpl extends RecurlyWebServiceBase implemen
 
     public Account getAccount(String accountCode) {
         if (accountCode == null || accountCode.isEmpty()) {
-            throw new RecurlyAPIException(new IllegalArgumentException("accountCode cannot be null or empty"));
+            String errorMessage = "accountCode cannot be null or empty";
+            throw new RecurlyAPIException(errorMessage, new IllegalArgumentException(errorMessage));
         }
 
         log.debug("Retrieving account with account code " + accountCode);
@@ -36,7 +37,8 @@ public class RecurlyAccountWebServiceImpl extends RecurlyWebServiceBase implemen
 
     public Account closeAccount(String accountCode) {
         if (accountCode == null || accountCode.isEmpty()) {
-            throw new RecurlyAPIException(new IllegalArgumentException("accountCode cannot be null or empty"));
+            String errorMessage = "accountCode cannot be null or empty";
+            throw new RecurlyAPIException(errorMessage, new IllegalArgumentException(errorMessage));
         }
 
         log.debug("Closing account with account code " + accountCode);
@@ -50,7 +52,8 @@ public class RecurlyAccountWebServiceImpl extends RecurlyWebServiceBase implemen
 
     public Account reopenAccount(String accountCode) {
         if (accountCode == null || accountCode.isEmpty()) {
-            throw new RecurlyAPIException(new IllegalArgumentException("accountCode cannot be null or empty"));
+            String errorMessage = "accountCode cannot be null or empty";
+            throw new RecurlyAPIException(errorMessage, new IllegalArgumentException(errorMessage));
         }
 
         log.debug("Reopening account with account code " + accountCode);

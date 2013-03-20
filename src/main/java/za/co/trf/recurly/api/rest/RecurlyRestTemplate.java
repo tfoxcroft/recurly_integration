@@ -89,7 +89,7 @@ public class RecurlyRestTemplate {
                 ? new HttpEntity<B>(requestBody, headers)
                 : new HttpEntity(headers);
 
-        log.debug("ABOUT TO EXCHANGE...");
+        log.debug("");
 
         if (params == null) {
             params = Collections.emptyMap();
@@ -99,17 +99,18 @@ public class RecurlyRestTemplate {
             ResponseEntity<R> response = restTemplate.exchange(uri, httpMethod, httpEntity, resultType, params);
 
             if (response.getStatusCode() != expectedHttpStatus) {
-                throw new RecurlyAPIException(new RuntimeException(response.toString()));
+                throw new RecurlyAPIException("Unexpected HttpStatus " +
+                        response.getStatusCode(), new RuntimeException(response.toString()));
             }
             log.debug("RESPONSE = " + response.getStatusCode() + " -> " + response.getBody());
 
             return response.getBody();
         } catch (HttpClientErrorException e) {
             log.error(e.getMessage() + ". Response body = " + e.getResponseBodyAsString(), e);
-            throw new RecurlyAPIException(e);
+            throw new RecurlyAPIException(e.getMessage(), e);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new RecurlyAPIException(e);
+            throw new RecurlyAPIException(e.getMessage(), e);
         }
 
     }

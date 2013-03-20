@@ -26,7 +26,8 @@ public class RecurlySubscriptionWebServiceImpl extends RecurlyWebServiceBase imp
     @Override
     public List<Subscription> getSubscriptionsForAccount(String accountCode) {
         if (accountCode == null || accountCode.isEmpty()) {
-            throw new RecurlyAPIException(new IllegalArgumentException("accountCode cannot be null or empty"));
+            String errorMessage = "accountCode cannot be null or empty";
+            throw new RecurlyAPIException(errorMessage, new IllegalArgumentException(errorMessage));
         }
 
         log.debug("Retrieving list of subscriptions for account " + accountCode);
@@ -39,7 +40,8 @@ public class RecurlySubscriptionWebServiceImpl extends RecurlyWebServiceBase imp
     @Override
     public Subscription getSubscription(final String uuid) {
         if (uuid == null || uuid.isEmpty()) {
-            throw new RecurlyAPIException(new IllegalArgumentException("uuid cannot be null or empty"));
+            String errorMessage = "uuid cannot be null or empty";
+            throw new RecurlyAPIException(errorMessage, new IllegalArgumentException(errorMessage));
         }
 
         log.debug("Retrieving subscription with uuid " + uuid);
@@ -52,12 +54,15 @@ public class RecurlySubscriptionWebServiceImpl extends RecurlyWebServiceBase imp
     @Override
     public Subscription updateSubscription(final String uuid, final SubscriptionUpdateRequest subscriptionUpdateRequest) {
         if (uuid == null || uuid.isEmpty()) {
-            throw new RecurlyAPIException(new IllegalArgumentException("uuid cannot be null or empty"));
+            String errorMessage = "uuid cannot be null or empty";
+            throw new RecurlyAPIException(errorMessage, new IllegalArgumentException(errorMessage));
         } else if (subscriptionUpdateRequest == null) {
-            throw new RecurlyAPIException(new IllegalArgumentException("subscriptionUpdateRequest cannot be null"));
+            String errorMessage = "subscriptionUpdateRequest cannot be null";
+            throw new RecurlyAPIException(errorMessage, new IllegalArgumentException(errorMessage));
         } else if (subscriptionUpdateRequest.getTimeframe() == null
                 || subscriptionUpdateRequest.getTimeframe().isEmpty()) {
-            throw new RecurlyAPIException(new IllegalArgumentException("timeframe cannot be null or empty"));
+            String errorMessage = "timeframe cannot be null or empty";
+            throw new RecurlyAPIException(errorMessage, new IllegalArgumentException(errorMessage));
         }
 
         log.debug("Updating subscription with uuid " + uuid);
@@ -70,7 +75,8 @@ public class RecurlySubscriptionWebServiceImpl extends RecurlyWebServiceBase imp
     @Override
     public Subscription cancelSubscription(String uuid) {
         if (uuid == null || uuid.isEmpty()) {
-            throw new RecurlyAPIException(new IllegalArgumentException("uuid cannot be null or empty"));
+            String errorMessage = "uuid cannot be null or empty";
+            throw new RecurlyAPIException(errorMessage, new IllegalArgumentException(errorMessage));
         }
 
         log.debug("Cancelling subscription with uuid " + uuid);
@@ -84,7 +90,8 @@ public class RecurlySubscriptionWebServiceImpl extends RecurlyWebServiceBase imp
     @Override
     public Subscription reactivateSubscription(String uuid) {
         if (uuid == null || uuid.isEmpty()) {
-            throw new RecurlyAPIException(new IllegalArgumentException("uuid cannot be null or empty"));
+            String errorMessage = "uuid cannot be null or empty";
+            throw new RecurlyAPIException(errorMessage, new IllegalArgumentException(errorMessage));
         }
 
         log.debug("Reactivating subscription with uuid " + uuid);

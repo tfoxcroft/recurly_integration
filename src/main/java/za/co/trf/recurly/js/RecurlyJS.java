@@ -78,7 +78,8 @@ public class RecurlyJS {
      */
     public String signOneTimeTransaction(final String accountCode, final int amountInCents) {
         if (accountCode == null || accountCode.isEmpty()) {
-            throw new IllegalArgumentException("Account Code is required");
+            String errorMessage = "Account Code is required";
+            throw new RecurlyJSException(errorMessage, new IllegalArgumentException(errorMessage));
         }
 
         return sign(new HashMap<String, Object>() {{
@@ -121,11 +122,13 @@ public class RecurlyJS {
      */
     protected String hash(String privateKey, String message) {
         if (message == null) {
-            throw new IllegalArgumentException("Message is not set.");
+            String errorMessage = "Message is not set.";
+            throw new RecurlyJSException(errorMessage, new IllegalArgumentException(errorMessage));
         }
 
         if (privateKey == null || privateKey.length() != 32) {
-            throw new IllegalArgumentException("Recurly private key is not set. The key must be 32 characters.");
+            String errorMessage = "Recurly private key is not set. The key must be 32 characters.";
+            throw new RecurlyJSException(errorMessage, new IllegalArgumentException(errorMessage));
         }
 
         try {
@@ -140,9 +143,9 @@ public class RecurlyJS {
             }
             return hash.toString();
         } catch (NoSuchAlgorithmException e) {
-            throw new RecurlyJSException(e);
+            throw new RecurlyJSException(e.getMessage(), e);
         } catch (InvalidKeyException e) {
-            throw new RecurlyJSException(e);
+            throw new RecurlyJSException(e.getMessage(), e);
         }
     }
 

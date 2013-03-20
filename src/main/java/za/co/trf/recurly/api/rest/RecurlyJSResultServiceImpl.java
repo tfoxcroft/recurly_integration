@@ -16,7 +16,8 @@ public class RecurlyJSResultServiceImpl extends RecurlyWebServiceBase implements
 
     private <T> T fetchResult(String resultToken, Class<T> resultType) {
         if (resultToken == null || resultToken.isEmpty()) {
-            throw new RecurlyAPIException(new IllegalArgumentException("resultToken cannot be null or empty"));
+            String message = "resultToken cannot be null or empty";
+            throw new RecurlyAPIException(message, new IllegalArgumentException(message));
         }
 
         String uri = RECURLY_API_BASE_URL + "recurly_js/result/{resultToken}";
