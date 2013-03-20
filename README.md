@@ -1,21 +1,26 @@
 Recurly Java Integration Library
 ================================
 
-Recurly JS Client Library
--------------------------
+Recurly is a software as a service company that provides recurring billing management as an outsourced service. The
+Recurly Java Integration Library is an open source library aimed at simplifying the integration of a java application
+with Recurly through RecurlyJS and Recurly's REST API.
+
+Project home page: http://tfoxcroft.github.com/recurly_integration/
+
+Recurly JS Client
+-----------------
 
 [Recurly.js](http://js.recurly.com/) is a Javascript library which allows you to easily embed and customize PCI compliant
 forms within your website. HMAC digital signatures are used to verify information sent to [Recurly](http://recurly.com/)
 via your customer's browser. The signature validates that parameters you have specified in your HTML have not
-been tampered with before being received by Recurly. The client library consists of helper methods to create 
-these signatures.
+been tampered with before being received by Recurly. The client library contains helper methods to create these signatures.
 
 Documentation: http://docs.recurly.com/recurlyjs
 
-Recurly REST API Client Library
--------------------------------
+Recurly REST API Client
+-----------------------
 
-The client library consists of services to interact with Recurly's REST API (API v2)
+The client library contains services to interact with Recurly's REST API (API v2)
 
 Documentation: http://docs.recurly.com/api
 

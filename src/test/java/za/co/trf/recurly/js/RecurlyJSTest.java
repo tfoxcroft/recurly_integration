@@ -20,6 +20,48 @@ public class RecurlyJSTest {
     private MockRecurlyJS recurlyJS = new MockRecurlyJS(SECRET_KEY);
 
     @Test
+    public void testSignForNewSubscriptionToPlan() throws Exception {
+        String expectedSignature = "439881d8272bb787a85b134d70864d39a603e3b0|" +
+                "nonce=1234567890ABC&subscription%5Bplan_code%5D=ANY_PLAN_CODE&timestamp=1330452";
+        String actualSignature = recurlyJS.signForNewSubscriptionToPlan("ANY_PLAN_CODE");
+        Assert.assertEquals("Incorrect signature generated for signForNewSubscriptionToPlan",
+                expectedSignature, actualSignature);
+    }
+
+    @Test
+    public void testSignForBillingInfoUpdate() throws Exception {
+        String expectedSignature = "603beda7b2407d9f140637062411c1a50b1f01d9|" +
+                "account%5Baccount_code%5D=ANY_ACCOUNT_CODE&nonce=1234567890ABC&timestamp=1330452";
+        String actualSignature = recurlyJS.signForBillingInfoUpdate("ANY_ACCOUNT_CODE");
+        Assert.assertEquals("Incorrect signature generated for signForBillingInfoUpdate",
+                expectedSignature, actualSignature);
+    }
+
+    @Test
+    public void testSignForOneTimeTransaction() throws Exception {
+        String expectedSignature = "97d4a614791cae4f894ae5db53961616448e0770|" +
+                "account%5Baccount_code%5D=ANY_ACCOUNT_CODE&nonce=1234567890ABC&timestamp=1330452" +
+                "&transaction%5Bamount_in_cents%5D=100";
+        String actualSignature = recurlyJS.signOneTimeTransaction("ANY_ACCOUNT_CODE", 100);
+        Assert.assertEquals("Incorrect signature generated for signForBillingInfoUpdate",
+                expectedSignature, actualSignature);
+    }
+
+    @Test(expected = RecurlyJSException.class)
+    public void testHashWithNullPrivateKey_shouldThrowRecurlyJSException() {
+        final String nullPrivateKey = null;
+        final String anyMessage = "ANY_MESSAGE";
+        recurlyJS.hash(nullPrivateKey, anyMessage);
+    }
+
+    @Test(expected = RecurlyJSException.class)
+    public void testHashWithNullMessage_shouldThrowRecurlyJSException() {
+        final String anyPrivateKey = "ANY_PRIVATE_KEY";
+        final String nullMessage = null;
+        recurlyJS.hash(anyPrivateKey, nullMessage);
+    }
+
+    @Test
     public void testHash() throws Exception {
         // Hash created using PHP's hash_hmac command:
         // hash_hmac('sha1', 'test', SECRET_KEY);
@@ -37,7 +79,8 @@ public class RecurlyJSTest {
         }});
         LOG.info("SignSimple: " + hash);
         Assert.assertEquals("Subscription hash not as expected",
-            "7e092a0c75c1219f6445cd8d41c59c9ada178879|account%5Baccount_code%5D=123&nonce=1234567890ABC&timestamp=1330452", hash);
+            "7e092a0c75c1219f6445cd8d41c59c9ada178879|" +
+                    "account%5Baccount_code%5D=123&nonce=1234567890ABC&timestamp=1330452", hash);
     }
 
     @Test
