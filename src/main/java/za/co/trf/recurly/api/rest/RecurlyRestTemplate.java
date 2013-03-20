@@ -15,6 +15,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import za.co.trf.recurly.KeyProvider;
 import za.co.trf.recurly.api.rest.dto.request.AccountChangeStateRequest;
+import za.co.trf.recurly.api.rest.dto.request.PlanChangeStateRequest;
 import za.co.trf.recurly.api.rest.dto.request.SubscriptionChangeStateRequest;
 import za.co.trf.recurly.api.rest.dto.request.SubscriptionUpdateRequest;
 import za.co.trf.recurly.api.rest.dto.response.*;
@@ -129,11 +130,13 @@ public class RecurlyRestTemplate {
 
         marshaller.setClassesToBeBound(
                 AccountChangeStateRequest.class,
+                PlanChangeStateRequest.class,
                 SubscriptionChangeStateRequest.class,
                 SubscriptionUpdateRequest.class,
                 Account.class,
                 AccountList.class,
                 Plan.class,
+                PlanList.class,
                 Subscription.class,
                 SubscriptionList.class);
 

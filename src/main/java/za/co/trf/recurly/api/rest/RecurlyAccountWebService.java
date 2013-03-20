@@ -15,7 +15,7 @@ public interface RecurlyAccountWebService {
     public List<Account> getAllAccounts();
 
     /**
-     * Get a specific Subscription
+     * Get a specific Account
      * @param accountCode the account code of the Account to retrieve
      */
     public Account getAccount(final String accountCode);
