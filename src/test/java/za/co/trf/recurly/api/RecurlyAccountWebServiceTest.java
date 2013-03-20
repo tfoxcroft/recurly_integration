@@ -1,5 +1,6 @@
 package za.co.trf.recurly.api;
 
+import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import za.co.trf.recurly.api.rest.RecurlyAccountWebServiceImpl;
@@ -10,28 +11,30 @@ import java.util.List;
 
 public class RecurlyAccountWebServiceTest {
 
-    private static RecurlyRestTemplate recurlyRestTemplate = new RecurlyRestTemplate("KEY_HERE");
-    private static RecurlyAccountWebServiceImpl accountWebService = new RecurlyAccountWebServiceImpl();
+    private static final String EXISTING_ACCOUNT_CODE = "ACCOUNT_CODE_HERE";
 
-    private static final String EXISTING_ACCOUNT_CODE = "13";
+    private static RecurlyAccountWebServiceImpl accountWebService;
+
+    private final Logger log = Logger.getLogger(getClass());
 
     @BeforeClass
     public static void setup() {
-        accountWebService.setRecurlyRestTemplate(recurlyRestTemplate);
+        accountWebService =  new RecurlyAccountWebServiceImpl();
+        accountWebService.setRecurlyRestTemplate(new RecurlyRestTemplate("KEY_HERE"));
     }
 
     @Test
     public void testGetAllAccounts() {
         List<Account> accounts = accountWebService.getAllAccounts();
         for (Account account : accounts) {
-            System.out.println("Recurly Account: " + account.getAccountCode());
+            log.debug("Recurly Account: " + account.getAccountCode());
         }
     }
 
     @Test
     public void testGetAccount() {
         Account account = accountWebService.getAccount(EXISTING_ACCOUNT_CODE);
-        System.out.println("Recurly Account: " + account.getAccountCode());
+        log.debug("Recurly Account: " + account.getAccountCode());
     }
 
     @Test
