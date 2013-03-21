@@ -49,7 +49,7 @@ public class RecurlyInvoiceWebServiceTest {
 
     @Test
     public void testGetInvoicePDF() throws Exception {
-        byte[] pdfData = invoiceWebService.getInvoicePDF("1368", null);
+        byte[] pdfData = invoiceWebService.getInvoicePDF(EXISTING_INVOICE_NUMBER, null);
         log.debug("Recurly Invoice PDF size: " + pdfData.length);
 
         new FileOutputStream("test-invoice.pdf").write(pdfData);
