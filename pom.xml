@@ -86,6 +86,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/RecurlyAccountWebServiceTest.java</exclude>
+                        <exclude>**/RecurlyInvoiceWebServiceTest.java</exclude>
                         <exclude>**/RecurlyPlanWebServiceTest.java</exclude>
                         <exclude>**/RecurlySubscriptionWebServiceTest.java</exclude>
                     </excludes>

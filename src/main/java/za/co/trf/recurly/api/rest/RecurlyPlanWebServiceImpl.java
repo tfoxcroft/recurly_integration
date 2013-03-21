@@ -15,6 +15,7 @@ import java.util.Map;
  */
 public class RecurlyPlanWebServiceImpl extends RecurlyWebServiceBase implements RecurlyPlanWebService {
 
+    @Override
     public List<Plan> getAllPlans() {
         log.debug("Retrieving list of plans");
         String url = RECURLY_API_BASE_URL + RECURLY_PLANS_URL_SUFFIX;
@@ -22,6 +23,7 @@ public class RecurlyPlanWebServiceImpl extends RecurlyWebServiceBase implements 
         return recurlyRestTemplate.exchangeXml(url, null, null, PlanList.class, HttpMethod.GET).getPlanList();
     }
 
+    @Override
     public Plan getPlan(String planCode) {
         if (planCode == null || planCode.isEmpty()) {
             String errorMessage = "planCode cannot be null or empty";

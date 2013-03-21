@@ -1,7 +1,6 @@
 package za.co.trf.recurly.api.rest;
 
 import za.co.trf.recurly.api.rest.dto.response.Plan;
-import za.co.trf.recurly.api.rest.dto.response.Subscription;
 
 import java.util.List;
 

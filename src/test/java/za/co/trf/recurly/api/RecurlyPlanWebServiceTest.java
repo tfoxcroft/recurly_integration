@@ -19,7 +19,7 @@ public class RecurlyPlanWebServiceTest {
 
     @BeforeClass
     public static void setup() {
-        planWebService =  new RecurlyPlanWebServiceImpl();
+        planWebService = new RecurlyPlanWebServiceImpl();
         planWebService.setRecurlyRestTemplate(new RecurlyRestTemplate("KEY_HERE"));
     }
 

@@ -7,6 +7,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.log4j.Logger;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
@@ -14,10 +15,7 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import za.co.trf.recurly.KeyProvider;
-import za.co.trf.recurly.api.rest.dto.request.AccountChangeStateRequest;
-import za.co.trf.recurly.api.rest.dto.request.PlanChangeStateRequest;
-import za.co.trf.recurly.api.rest.dto.request.SubscriptionChangeStateRequest;
-import za.co.trf.recurly.api.rest.dto.request.SubscriptionUpdateRequest;
+import za.co.trf.recurly.api.rest.dto.request.*;
 import za.co.trf.recurly.api.rest.dto.response.*;
 
 import java.util.ArrayList;
@@ -48,21 +46,20 @@ public class RecurlyRestTemplate {
         restTemplate.setMessageConverters(buildMessageConverters());
     }
 
-    /**
-     * Execute the HTTP method to the given URI template, writing the given request entity to the request, and
-     * returns the response as the type provide
-     * @param uri the URI template
-     * @param params map of the parameter names and values to substituted in the given URI template
-     * @param requestBody the entity to be included as the request body
-     * @param resultType the response body class
-     * @param httpMethod the HttpMethod to execute
-     * @param <B> the request body type
-     * @param <R> the response body type
-     * @return the response body
-     */
+    public <B, R> R exchangePDF(String uri, Map<String, String> params, B requestBody,
+                                Class<R> resultType, HttpMethod httpMethod) {
+        MediaType acceptableMediaType = MediaType.parseMediaType("application/pdf");
+        return exchange(uri, params, requestBody, resultType, httpMethod, acceptableMediaType, HttpStatus.OK);
+    }
+
     public <B, R> R exchangeXml(String uri, Map<String, String> params, B requestBody,
                                 Class<R> resultType, HttpMethod httpMethod) {
         return exchangeXml(uri, params, requestBody, resultType, httpMethod, HttpStatus.OK);
+    }
+
+    public <B, R> R exchangeXml(String uri, Map<String, String> params, B requestBody,
+                                Class<R> resultType, HttpMethod httpMethod, HttpStatus expectedHttpStatus) {
+        return exchange(uri, params, requestBody, resultType, httpMethod, MediaType.APPLICATION_XML, expectedHttpStatus);
     }
 
     /**
@@ -73,15 +70,16 @@ public class RecurlyRestTemplate {
      * @param requestBody the entity to be included as the request body
      * @param resultType the response body class
      * @param httpMethod the HttpMethod to execute
+     * @param acceptableMediaType the acceptable MediaType
      * @param expectedHttpStatus the HttpStatus expected
      * @param <B> the request body type
      * @param <R> the response body type
      * @return the response body
      */
-    public <B, R> R exchangeXml(String uri, Map<String, String> params, B requestBody,
-                                Class<R> resultType, HttpMethod httpMethod, HttpStatus expectedHttpStatus) {
+    public <B, R> R exchange(String uri, Map<String, String> params, B requestBody, Class<R> resultType,
+                                HttpMethod httpMethod, MediaType acceptableMediaType, HttpStatus expectedHttpStatus) {
         List<MediaType> acceptableMediaTypes = new ArrayList<MediaType>();
-        acceptableMediaTypes.add(MediaType.APPLICATION_XML);
+        acceptableMediaTypes.add(acceptableMediaType);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(acceptableMediaTypes);
@@ -121,6 +119,7 @@ public class RecurlyRestTemplate {
         List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
         messageConverters.add(new MarshallingHttpMessageConverter(marshaller, marshaller));
         messageConverters.add(new FormHttpMessageConverter());
+        messageConverters.add(new ByteArrayHttpMessageConverter());
 
         return messageConverters;
     }
@@ -129,11 +128,17 @@ public class RecurlyRestTemplate {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 
         marshaller.setClassesToBeBound(
+                // Request
                 AccountChangeStateRequest.class,
+                InvoiceChangeStateRequest.class,
                 PlanChangeStateRequest.class,
                 SubscriptionChangeStateRequest.class,
                 SubscriptionUpdateRequest.class,
+
+                // Response
                 Account.class,
+                Invoice.class,
+                InvoiceList.class,
                 AccountList.class,
                 Plan.class,
                 PlanList.class,
