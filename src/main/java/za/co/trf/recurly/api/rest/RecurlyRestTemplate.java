@@ -46,12 +46,6 @@ public class RecurlyRestTemplate {
         restTemplate.setMessageConverters(buildMessageConverters());
     }
 
-    public <B, R> R exchangePDF(String uri, Map<String, String> params, B requestBody,
-                                Class<R> resultType, HttpMethod httpMethod) {
-        MediaType acceptableMediaType = MediaType.parseMediaType("application/pdf");
-        return exchange(uri, params, requestBody, resultType, httpMethod, acceptableMediaType, HttpStatus.OK);
-    }
-
     public <B, R> R exchangeXml(String uri, Map<String, String> params, B requestBody,
                                 Class<R> resultType, HttpMethod httpMethod) {
         return exchangeXml(uri, params, requestBody, resultType, httpMethod, HttpStatus.OK);
@@ -60,6 +54,12 @@ public class RecurlyRestTemplate {
     public <B, R> R exchangeXml(String uri, Map<String, String> params, B requestBody,
                                 Class<R> resultType, HttpMethod httpMethod, HttpStatus expectedHttpStatus) {
         return exchange(uri, params, requestBody, resultType, httpMethod, MediaType.APPLICATION_XML, expectedHttpStatus);
+    }
+
+    public <B, R> R exchangePDF(String uri, Map<String, String> params, B requestBody,
+                                Class<R> resultType, HttpMethod httpMethod) {
+        MediaType acceptableMediaType = MediaType.parseMediaType("application/pdf");
+        return exchange(uri, params, requestBody, resultType, httpMethod, acceptableMediaType, HttpStatus.OK);
     }
 
     /**
@@ -101,7 +101,7 @@ public class RecurlyRestTemplate {
                 throw new RecurlyAPIException("Unexpected HttpStatus " +
                         response.getStatusCode(), new RuntimeException(response.toString()));
             }
-            log.debug("RESPONSE = " + response.getStatusCode() + " -> " + response.getBody());
+            log.debug("RESPONSE = " + response.getStatusCode());
 
             return response.getBody();
         } catch (HttpClientErrorException e) {
