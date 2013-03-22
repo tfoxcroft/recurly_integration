@@ -81,7 +81,7 @@ Similarly, configure beans for the Recurly REST API client as follows:
     <property name="recurlyRestTemplate" ref="recurlyRestTemplate"/>
 </bean>
 
-<bean id="recurlyJSResultService" class="za.co.trf.recurly.js.RecurlyJSResultServiceImpl">
+<bean id="recurlyJSResultService" class="za.co.trf.recurly.api.rest.RecurlyJSResultServiceImpl">
     <property name="recurlyRestTemplate" ref="recurlyRestTemplate"/>
 </bean>
 
