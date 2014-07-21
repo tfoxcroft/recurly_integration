@@ -56,8 +56,7 @@ mvn install
 Configuration and Usage
 -----------------------
 
-For RecurlyJS usage, please see the 
-[Sample Application](https://github.com/tfoxcroft/recurly_integration_sample_app) as well as  the JUnit test cases.
+For RecurlyJS usage, please see the JUnit test cases.
 
 The library has been designed with Spring configuration in mind. Configure the beans for the RecurlyJS client as follows:
 
