@@ -12,6 +12,7 @@ import java.util.List;
 
 public class RecurlySubscriptionWebServiceTest {
 
+    public static final String EXISTING_PLAN_CODE = "1";
     private static final String EXISTING_ACCOUNT_CODE = "ACCOUNT_CODE_HERE";
     private static final String EXISTING_SUBSCRIPTION_UUID = "UUID_HERE";
 
@@ -50,7 +51,7 @@ public class RecurlySubscriptionWebServiceTest {
     @Test
     public void testUpdateSubscription() {
         SubscriptionUpdateRequest updateRequest = new SubscriptionUpdateRequest(SubscriptionUpdateRequest.TimeFrame.NOW);
-        updateRequest.setPlanCode("16_50");
+        updateRequest.setPlanCode(EXISTING_PLAN_CODE);
         Subscription updatedSubscription = subscriptionWebService.updateSubscription(EXISTING_SUBSCRIPTION_UUID, updateRequest);
         log.debug("Recurly Subscription Updated: " + updatedSubscription.getUuid());
     }

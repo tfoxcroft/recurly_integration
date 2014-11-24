@@ -46,7 +46,4 @@ public class RecurlyAccountWebServiceTest {
     public void testReopenAccount() {
         accountWebService.reopenAccount(EXISTING_ACCOUNT_CODE);
     }
-
-
-
 }

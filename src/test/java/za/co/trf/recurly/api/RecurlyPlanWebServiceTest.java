@@ -38,7 +38,7 @@ public class RecurlyPlanWebServiceTest {
     }
 
     @Test
-    public void testCloseAccount() {
+    public void testDeletePlan() {
         planWebService.deletePlan(EXISTING_PLAN_CODE);
     }
 
