@@ -42,7 +42,7 @@ repositories to your POM. Simply add the necessary dependency:
 <dependency>
     <groupId>com.github.tfoxcroft</groupId>
     <artifactId>recurly-integration-library</artifactId>
-    <version>2.1.1</version>
+    <version>2.2.0</version>
 </dependency>
 ```
 
